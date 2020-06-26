@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import EmployeeProvider from './context/employeeContext';
+import AddEmployee from './components/AddEmployee';
+import EmployeeList from './components/EmployeeList';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<div>
+			{/* nested providers should work but it may be better to  separate them and wrap components that need them */}
+			<EmployeeProvider>
+				{/* wrap components that need to cosume the context */}
+				<AddEmployee />
+				<EmployeeList />
+			</EmployeeProvider>
+		</div>
+	);
+};
 
 export default App;
